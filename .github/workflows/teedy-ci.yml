@@ -16,21 +16,6 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: 配置阿里Maven镜像
-        run: |
-          mkdir -p ~/.m2
-          cat > ~/.m2/settings.xml <<EOF
-<settings>
-<mirrors>
-<mirror>
-<id>aliyun</id>
-<mirrorOf>*</mirrorOf>
-<url>https://maven.aliyun.com/repository/public</url>
-</mirror>
-</mirrors>
-</settings>
-EOF
-
       - name: 缓存Maven依赖
         uses: actions/cache@v3
         with:
