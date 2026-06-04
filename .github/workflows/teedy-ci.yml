@@ -41,4 +41,4 @@ EOF
 
       #【第三段：打包命令】
       - name: Maven打包
-        run: mvn clean package -DskipTests -Dpmd.skip=true -pl docs-web -am -T1.5C -nsu
+        run: mvn clean compile -DskipTests -Dpmd.skip=true -pl docs-web -am -T1.5C -nsu
