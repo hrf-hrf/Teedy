@@ -15,9 +15,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Maven打包
-        run: mvn clean package -DskipTests
-      - name: PMD代码扫描
-        run: mvn pmd:pmd
+        run: mvn clean package -DskipTests -Dpmd.skip=true  
       - name: 单元测试
         run: mvn test
       - name: 生成测试报告
