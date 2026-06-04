@@ -15,7 +15,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Maven打包
-        run: mvn clean package -DskipTests -Dpmd.skip=true  
+        run: mvn clean package -DskipTests -Dpmd.skip=true -pl docs-web -am
       - name: 单元测试
         run: mvn test
       - name: 生成测试报告
