@@ -16,7 +16,6 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      #【第一段：阿里云镜像配置，放在jdk下面】
       - name: 配置阿里Maven镜像
         run: |
           mkdir -p ~/.m2
@@ -32,13 +31,11 @@ jobs:
 </settings>
 EOF
 
-      #【第二段：依赖缓存】
       - name: 缓存Maven依赖
         uses: actions/cache@v3
         with:
           path: ~/.m2/repository
           key: maven-${{ hashFiles('**/pom.xml') }}
 
-      #【第三段：打包命令】
-      - name: Maven打包
+      - name: Maven编译
         run: mvn clean compile -DskipTests -Dpmd.skip=true -pl docs-web -am -T1.5C -nsu
